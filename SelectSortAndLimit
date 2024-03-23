@@ -1,0 +1,14 @@
+#Sql
+SELECT city, state, pop 
+FROM zips 
+WHERE state = 'NY' AND pop BETWEEN 1000 AND 5000 
+ORDER BY pop DESC 
+LIMIT 10;
+
+#MongoDB
+db.zips.find(
+    { state: "NY", pop: { $gte: 1000, $lte: 5000 }},
+    {_id: 0, state: 1, city: 1, pop: 1} #Props included in the select 0 exclude and 1 include 
+    ).sort({pop: -1}) #-1 desc 1 asc
+    .limit(10)
+
