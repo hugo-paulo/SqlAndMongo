@@ -1,0 +1,18 @@
+#Sql
+UPDATE sales SET storeLocation = 'London' WHERE id = '1234567';
+
+#MongoDB
+db.sales.updateOne(
+  { _id: ObjectId("5bd761dcae323e45a93ccab2") },
+  { $set: { storeLocation: "London" } },
+  { upsert: true } 
+);
+
+#update a document that may not already exist, you can optionally include it by setting the upsert option to true
+
+#For many entries
+db.sales.updateMany(
+ { purchaseMethod: "Online" },
+  { $set:  { couponUsed: true } }
+);
+
