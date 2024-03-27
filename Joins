@@ -33,3 +33,25 @@ account_holder is the name of the new array field to add to the input documents.
 
 
 #note $merge and $out operators can't be used with $lookup
+
+
+#Eg
+ SELECT *, account_info
+ FROM transactions
+ WHERE account_info IN (
+    SELECT *
+    FROM accounts
+    WHERE account_id = transactions.account_id
+ );
+
+db.transactions.aggregate([
+  {
+    $lookup: {
+      from: "accounts",
+      localField: "account_id",
+      foreignField: "account_id",
+      as: "account_info",
+    },
+  }
+])
+
