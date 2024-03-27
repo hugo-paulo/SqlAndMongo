@@ -30,3 +30,6 @@ transfer_id as localField is the field to use in the equality match from the inp
 transfers_complete as foreignField is the field to use in the equality match from the transfers collection.
 account_id and account_holder are the projected fields in the resulting documents while suppressing the _id field.
 account_holder is the name of the new array field to add to the input documents.
+
+
+#note $merge and $out operators can't be used with $lookup
