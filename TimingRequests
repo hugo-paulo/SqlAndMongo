@@ -1,0 +1,30 @@
+#SQL
+DECLARE @start_time DATETIME;
+DECLARE @end_time DATETIME;
+
+SET @start_time = GETDATE(); -- Capture start time
+-- Your SELECT query here
+SELECT * FROM your_table;
+SET @end_time = GETDATE(); -- Capture end time
+
+SELECT DATEDIFF(MILLISECOND, @start_time, @end_time) AS [Duration in milliseconds];
+
+#MongoDB
+// Capture start time
+var start_time = new Date();
+
+// Your MongoDB query here (replace with your actual query)
+db.your_collection.find({});
+
+// Capture end time
+var end_time = new Date();
+
+// Calculate duration in milliseconds
+var durationInMilliseconds = end_time - start_time;
+
+// Insert the duration into MongoDB (adjust as needed)
+db.duration_collection.insertOne({
+    start_time: start_time,
+    end_time: end_time,
+    duration_ms: durationInMilliseconds
+});
